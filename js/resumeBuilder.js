@@ -7,6 +7,11 @@
 		<div id="main">
 */
 
+// Added by grader recommendation
+// helps to write more "secure" codes by preventing things
+//	 such as marking down a function with bad syntax 
+//   to execute or loading unused variables
+'use strict';
 
 var sampleObject = {
 	"items" : [
@@ -150,7 +155,7 @@ bio.display = function() {
 	// Check to see if any skills have been defined
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
-		for (skill in bio.skills) {
+		for (var skill in bio.skills) {
 			$("#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));	
 		}
 	}
@@ -161,7 +166,7 @@ bio.display = function() {
 work.display = function() {
 	// Add the jobx to the list
 	if (work.jobs.length > 0) {
-		for (job in work.jobs) {
+		for (var job in work.jobs) {
 			$("#workExperience").append(HTMLworkStart);
 			var employerInfo = HTMLworkEmployer.replace("%data%", work.jobs[job].employer)
 				.concat(HTMLworkTitle.replace("%data%", work.jobs[job].title))
@@ -174,11 +179,11 @@ work.display = function() {
 		
 		}
 	}
-}
+};
 
 education.display = function() {
 	if (education.schools.length > 0) {
-		for (school in education.schools) {
+		for (var school in education.schools) {
 			$("#education").append(HTMLschoolStart);
 			var schoolInfo = HTMLschoolName.replace("%data%", education.schools[school].name)
 				.concat(HTMLschoolDegree.replace("%data%", education.schools[school].degree))
@@ -194,7 +199,7 @@ education.display = function() {
 
 	$("#education").append(HTMLonlineClasses);
 	if (education.onlineCourses.length > 0) {
-		for (course in education.onlineCourses) {
+		for (var course in education.onlineCourses) {
 			$("#education").append(HTMLschoolStart);
 			var schoolInfo = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title)
 				.concat(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school))
@@ -206,7 +211,7 @@ education.display = function() {
 		
 		}
 	}
-}
+};
 
 //$(document).click(function(loc) {
 //	// Display the location where the user clicks on the page
@@ -215,11 +220,9 @@ education.display = function() {
 
 
 
-
+// The following function is not required as part of the final project.
 function inName(oldName) {
     var finalName = oldName;
-    // Your code goes here!
-console.log("Old Name: " + oldName);
 
 	// Test to ensure the name has been passed,
 	//		if the name has not been passed use the bio name.
@@ -235,12 +238,12 @@ console.log("Old Name: " + oldName);
 	    finalName = n.join(" ");
 	}
     return finalName;
-}
+};
 
 
 projects.display = function() {
 	if (projects.project.length > 0) {
-		for (project in projects.project) {
+		for (var project in projects.project) {
 			$("#projects").append(HTMLprojectStart);
 			var image = HTMLprojectImage.replace("%data%", projects.project[project].image);
 			image = image.replace("<img ", "<img height='auto' width='150' ");
@@ -252,6 +255,7 @@ projects.display = function() {
 		}
 	}
 };
+// NOTE: Semicolons should be included at the end of function expressions, but not at the end of function declarations.
 
 bio.display();
 work.display();
@@ -260,9 +264,4 @@ education.display();
 
 $("#main").append(internationalizeButton);
 $("#map-div").append(googleMap);
-
-
-
-
-
-
+// Blank lines are NOT recommended at the end of the file
